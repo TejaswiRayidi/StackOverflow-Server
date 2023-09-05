@@ -3,9 +3,14 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
 
+import Post from "./models/Post.js";
+import posts from "./data.js";
+
 import userRoutes from "./routes/users.js"
 import questionRoutes from './routes/Questions.js'
 import answerRoutes from './routes/Answers.js'
+import subsRoutes from "./routes/Subscription.js";
+import postRoutes from "./routes/Posts.js";
 
 const app = express();
 dotenv.config();
@@ -20,6 +25,8 @@ app.get('/',(req, res) => {
 app.use("/user", userRoutes)
 app.use('/questions',questionRoutes)
 app.use('/answer',answerRoutes)
+app.use('/subscription', subsRoutes)
+app.use('/post', postRoutes)
 
 const PORT = process.env.PORT || 5000
 

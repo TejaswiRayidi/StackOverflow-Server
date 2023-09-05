@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 
-import User from '../models/auth.js'
+import User from '../models/auth.js';
 
 export const signup = async (req, res) => {
     const { name, email, password } = req.body;
@@ -28,7 +28,7 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     try{
         const existingUser = await User.findOne({ email });
-       
+
         if(!existingUser){
             return res.status(404).json({message:"User dosen't Exist."});
         }
@@ -46,4 +46,4 @@ export const login = async (req, res) => {
     }catch(error) {
         res.status(500).json("Something went wrong...")
     }
-}
+};
